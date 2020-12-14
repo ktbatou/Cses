@@ -15,7 +15,7 @@ int main()
     {
         cin >> y;
         cin >> x;
-        if (y > x)
+        if (y >= x)
         {
             if (y % 2 == 0)
             {
@@ -28,7 +28,7 @@ int main()
                 result[i] = ((y * y) + 1) + (x - 1);
             } 
         }
-        if (x > y)
+        else if (x > y)
         {
             if (x % 2 != 0)
             {
