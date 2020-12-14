@@ -5,61 +5,51 @@ using namespace std;
 
 int main()
 {
+    long long int result[100000];
     int test;
-    long int tab[10][10];
-    int i;
-    int j;
-    int startx;
-    int starty;
-    int n;
-    int start;
-    int end;
-    int round;
+    int x;
+    int y;
 
-    i = 0;
-    j = 0;
-    n = 1;
-    round = 2;
-    startx = 0;
-    starty;
-    end = 2;
-    while (n <= 9)
+    cin >> test;
+    for (int i = 0; i < test; i++)
     {
-        for (j = startx; j < end; j++)
+        cin >> y;
+        cin >> x;
+        if (y > x)
         {
-            tab[i][j] = n++;
-        }
-        starty++;
-        for(i = starty ; i < end ; i++)
-        {
-            tab[i][end - 1] = n++;
-        }
-        end--;
-        if (j > end - 1)
-        { 
-            for (j = end; j >= startx; j--)
+            if (y % 2 == 0)
             {
-                tab[end][j - 1] = n++;
+                x--;
+                result[i] = ((y * y) - x);
             }
-            start = 0;
-            end = ++round;
-        }
-        if (i > end - 1)
-        {
-            for (i = end; i >= starty ; --i)
+            else
             {
-                tab[i][j] = n++;
-            }
-            //sttx--;
+                y -= 1;
+                result[i] = ((y * y) + 1) + (x - 1);
+            } 
         }
+        if (x > y)
+        {
+            if (x % 2 != 0)
+            {
+                y -= 1;
+                result[i] = (x * x) - y;
+            }
+            else
+            {
+                x -= 1;
+                y--;
+                result[i] = ((x * x) + 1) + y;
+            }
+        }
+        if (x == 1 && y == 1)
+            result[i] = 1;
     }
-    i = 0;
-    while (i < 3)
+    for (int i = 0; i < test; i++)
     {
-        for (int j = 0; j < 3; j++)
-          printf("%ld ", tab[i][j]);
-        printf("\n");
-        i++;
+        cout << result[i] << "\n";
     }
+    
+    
     return (0);
 }
